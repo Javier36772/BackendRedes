@@ -4,7 +4,7 @@
     const createUser = async (user) => {
         const { email, contraseña, nombre } = user;
         const [result] = await pool.query(
-            'INSERT INTO usuarios (correo, contrasena, nombre) VALUES (?, ?, ?)',
+            'INSERT INTO usuarios (correo, contraseña, nombre) VALUES (?, ?, ?)',
             [email, contraseña, nombre]
         );
         return { id: result.insertId, email, nombre };  // Devolvemos el nuevo usuario con su ID asignado por la BD
@@ -26,7 +26,7 @@
     const updateUserById = async (id, updatedData) => {
         const { email, contraseña, nombre } = updatedData;
         await pool.query(
-            'UPDATE usuarios SET correo = ?, contrasena = ?, nombre = ? WHERE id_usuario = ?',
+            'UPDATE usuarios SET correo = ?, contraseña = ?, nombre = ? WHERE id_usuario = ?',
             [email, contraseña, nombre, id]
         );
         return getUserById(id);  // Devolvemos el usuario actualizado

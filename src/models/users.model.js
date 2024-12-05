@@ -2,19 +2,19 @@
 
     // Crear usuario
     // const createUser = async (user) => {
-    //     const { email, contraseña, nombre } = user;
+    //     const { email, contrasena, nombre } = user;
     //     const [result] = await pool.query(
-    //         'INSERT INTO usuarios (correo, contraseña, nombre) VALUES (?, ?, ?)',
-    //         [email, contraseña, nombre]
+    //         'INSERT INTO usuarios (correo, contrasena, nombre) VALUES (?, ?, ?)',
+    //         [email, contrasena, nombre]
     //     );
     //     return { id: result.insertId, email, nombre };  // Devolvemos el nuevo usuario con su ID asignado por la BD
     // };
 
     const createUser = async (user) => {
-        const { email, contraseña, nombre } = user; // Usa el nombre correcto para "contraseña"
+        const { email, contrasena, nombre } = user; // Usa el nombre correcto para "contrasena"
         const [result] = await pool.query(
-            'INSERT INTO usuarios (correo, contraseña, nombre) VALUES (?, ?, ?)', // Respeta los nombres de las columnas
-            [email, contraseña, nombre]
+            'INSERT INTO usuarios (correo, contrasena, nombre) VALUES (?, ?, ?)', // Respeta los nombres de las columnas
+            [email, contrasena, nombre]
         );
         return { id: result.insertId, email, nombre }; // Devolvemos los datos
     };
@@ -34,10 +34,10 @@
 
     // Actualizar usuario por ID
     const updateUserById = async (id, updatedData) => {
-        const { email, contraseña, nombre } = updatedData;
+        const { email, contrasena, nombre } = updatedData;
         await pool.query(
-            'UPDATE usuarios SET correo = ?, contraseña = ?, nombre = ? WHERE id_usuario = ?',
-            [email, contraseña, nombre, id]
+            'UPDATE usuarios SET correo = ?, contrasena = ?, nombre = ? WHERE id_usuario = ?',
+            [email, contrasena, nombre, id]
         );
         return getUserById(id);  // Devolvemos el usuario actualizado
     };

@@ -14,7 +14,7 @@ const createNewUser = async (req, res) => {
 
     const newUser = {
         email,
-        contraseña: hashedPassword, // Lo guardamos como "contraseña"
+        contrasena: hashedPassword, // Lo guardamos como "contraseña"
         nombre
     };
 
@@ -60,7 +60,7 @@ const updateUser = async (req, res) => {
 
     const updatedUser = {
         email,
-        contraseña: hashedPassword,
+        contrasena: hashedPassword,
         nombre
     };
 

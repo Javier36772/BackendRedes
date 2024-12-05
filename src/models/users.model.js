@@ -1,14 +1,24 @@
     const pool = require('../configs/db.config');
 
     // Crear usuario
+    // const createUser = async (user) => {
+    //     const { email, contraseña, nombre } = user;
+    //     const [result] = await pool.query(
+    //         'INSERT INTO usuarios (correo, contraseña, nombre) VALUES (?, ?, ?)',
+    //         [email, contraseña, nombre]
+    //     );
+    //     return { id: result.insertId, email, nombre };  // Devolvemos el nuevo usuario con su ID asignado por la BD
+    // };
+
     const createUser = async (user) => {
-        const { email, contraseña, nombre } = user;
+        const { email, contraseña, nombre } = user; // Usa el nombre correcto para "contraseña"
         const [result] = await pool.query(
-            'INSERT INTO usuarios (correo, contraseña, nombre) VALUES (?, ?, ?)',
+            'INSERT INTO usuarios (correo, contraseña, nombre) VALUES (?, ?, ?)', // Respeta los nombres de las columnas
             [email, contraseña, nombre]
         );
-        return { id: result.insertId, email, nombre };  // Devolvemos el nuevo usuario con su ID asignado por la BD
+        return { id: result.insertId, email, nombre }; // Devolvemos los datos
     };
+    
 
     // Obtener todos los usuarios
     const getUsers = async () => {

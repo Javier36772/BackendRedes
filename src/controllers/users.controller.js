@@ -3,17 +3,18 @@ const bcrypt = require('bcrypt');
 
 // Crear un nuevo usuario
 const createNewUser = async (req, res) => {
-    const { email, password, nombre } = req.body;
+    const { email, password, nombre } = req.body; // Aquí llega "password" desde el request
 
     if (!email || !password || !nombre) {
         return res.status(400).json({ message: 'Todos los campos son requeridos' });
     }
 
+    // Encriptamos la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = {
         email,
-        contraseña: hashedPassword,
+        contraseña: hashedPassword, // Lo guardamos como "contraseña"
         nombre
     };
 
